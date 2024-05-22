@@ -15,4 +15,3 @@ public class SpringFoxConfig {
         return new Docket(DocumentationType.SWAGGER_2).select().build();
     }
 }
-// test
