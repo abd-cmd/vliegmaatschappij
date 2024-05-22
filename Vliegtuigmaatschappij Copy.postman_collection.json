@@ -1,0 +1,1176 @@
+{
+	"info": {
+		"_postman_id": "875f111f-58a1-4108-8e1a-f938d9571738",
+		"name": "Vliegtuigmaatschappij Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vliegtuig",
+			"item": [
+				{
+					"name": "Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuw vliegtuig moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"test\",\r\n    \"firstclassstoelenmax\" : 0,\r\n    \"businessstoelenmax\" : 0,\r\n    \"economyclassstoelenmax\" : 0,\r\n    \"prijsfirstclass\":80.0,\r\n    \"prijsbusinessclass\":60.0,\r\n    \"prijseconomyclass\":40.0\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vliegtuig",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vliegtuig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('alle vliegtuigen moeten getoond worden', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vliegtuigen",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vliegtuigen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200){\r",
+									"    pm.test('Vliegtuig met gegeven id is verwijderd')\r",
+									"}else if(pm.response.code === 404){\r",
+									"    pm.test('Vliegtuig bestaat niet')\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vliegtuig/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vliegtuig",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Vliegtuig type wordt geupdate', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"test\",\r\n    \"firstclassstoelenmax\" : 0,\r\n    \"businessstoelenmax\" : 0,\r\n    \"economyclassstoelenmax\" : 0,\r\n    \"prijsfirstclass\":80.0,\r\n    \"prijsbusinessclass\":60.0,\r\n    \"prijseconomyclass\":40.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vliegtuig/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vliegtuig",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindbyId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('vliegtuig wordt getoond met het gegeven id', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vliegtuig/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vliegtuig",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200){\r",
+									"    pm.test('Nieuwe gebruiker geregistreerd')\r",
+									"}else if(pm.response.code === 404){\r",
+									"    pm.test('Gebruiker bestaat niet')\r",
+									"}\r",
+									"else if(pm.response.code === 500){\r",
+									"    pm.test('Gebruiker bestaat al')\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"admin2\",\r\n    \"firstName\": \"Ad\",\r\n    \"lastName\": \"Min\",\r\n    \"email\":\"Oosteromthom@gmail.com\",\r\n    \"role\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Remember bearer token after login\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", token);\r",
+									"}\r",
+									"pm.test('Gebruiker moet in kunnen loggen', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"admin2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Medewerker",
+			"item": [
+				{
+					"name": "Save Medewerker",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuwe luchthaven moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"voornaam\" : \"Jan\",\r\n    \"achternaam\": \"Lang\",\r\n    \"leeftijd\": \"34\",\r\n    \"emailadres\": \"janlang@gmail.com\",\r\n    \"telefoonnummer\" : \"0684597531\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/medewerker",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"medewerker"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Luchthaven",
+			"item": [
+				{
+					"name": "Save Luchthaven",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuwe luchthaven moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"luchthavennaam\": \"TEST\",\r\n    \"stad\": \"Amsterdam\",\r\n    \"land\": \"Nederland\",\r\n    \"code\": \"AMS\",\r\n    \"lat\": \"52.3105386\",\r\n    \"lon\": \"4.7682744\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/luchthaven",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"luchthaven"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Luchthavens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('alle luchthavens moeten getoond worden', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/luchthavens",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"luchthavens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Luchthaven",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Luchthaven met gegeven id moet worden verwijderd', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/luchthaven/83",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"luchthaven",
+								"83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Luchthaven",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Luchthaven wordt geupdate', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"luchthavennaam\": \"TEST1\",\r\n    \"stad\": \"Utrecht\",\r\n    \"land\": \"Nederland\",\r\n    \"code\": \"AMS\",\r\n    \"lat\": \"52.3105386\",\r\n    \"lon\": \"4.7682744\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/luchthaven/105",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"luchthaven",
+								"105"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Luchthaven by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Luchthaven wordt getoond met het gegeven id', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/luchthaven/105",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"luchthaven",
+								"105"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Klant",
+			"item": [
+				{
+					"name": "Save Klant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuwe Klant moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"voornaam\": \"Test\",\r\n    \"achternaam\": \"delete\",\r\n    \"telefoonnummer\": \"640906705\",\r\n    \"leeftijd\": 20,\r\n    \"emailadres\": \"sehhh@gmail.com\",\r\n    \"nationaliteit\": \"Nederlands\",\r\n    \"boeking\":  null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/klant",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"klant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Klanten",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('alle klanten moeten getoond worden', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/klanten",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"klanten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Klant by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Klant wordt getoond met het gegeven id', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/klant/104",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"klant",
+								"104"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Klant by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Klant met gegeven id moet worden verwijderd', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/klant/103",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"klant",
+								"103"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Klant by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Klant wordt geupdate', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"voornaam\": \"Test\",\r\n    \"achternaam\": \"delete\",\r\n    \"leeftijd\": 20,\r\n    \"emailadres\": \"sehhh@gmail.com\",\r\n    \"telefoonnummer\": \"640906705\",\r\n    \"nationaliteit\": \"Nederlands\",\r\n    \"boeking\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/klant/104",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"klant",
+								"104"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Boeking",
+			"item": [
+				{
+					"name": "Save Boeking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuwe Boeking moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prijs\": 150,\r\n    \"bevestiging\": false,\r\n    \"klasse\": \"FIRSTCLASS\",\r\n    \"vlucht\": null,\r\n    \"klant\": null,\r\n    \"employee\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/boeking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"boeking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Boeking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Luchthaven wordt geupdate', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prijs\": 150.0,\r\n    \"bevestiging\": false,\r\n    \"klasse\": \"FIRSTCLASS\",\r\n    \"vlucht\": null,\r\n    \"klant\": null,\r\n    \"employee\": null\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/boeking/24",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"boeking",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Boekingen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('alle Boekingen moeten getoond worden', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/boekingen",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"boekingen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Boeking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/boeking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"boeking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boeking by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/boeking/32",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"boeking",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vluchten Opzoeken",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vlucht/TEST/TEST",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vlucht",
+								"TEST",
+								"TEST"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vlucht reserveren V2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vlucht",
+			"item": [
+				{
+					"name": "Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Nieuwe vlucht moet worden gemaakt met de gegevens van de body', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vertrekdatum\": \"2021-11-05\",\r\n    \"tijdstip\": \"2021-11-05T20:30:00.9483536\",\r\n    \"stoelenbezet\": 2,\r\n    \"tijdsduur\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vlucht",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vlucht"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Vluchten",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('alle vluchten moeten getoond worden', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vluchten",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vluchten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vlucht",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Vlucht wordt geupdate', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"vertrekdatum\": \"2021-11-05\",\r\n        \"tijdstip\": \"2021-11-05T20:30:00.948354\",\r\n        \"stoelenbezet\": 2,\r\n        \"tijdsduur\": 3.0,\r\n        \"eindHaven\": null,\r\n        \"beginLuchthaven\": null,\r\n        \"boekingList\": [],\r\n        \"vliegtuig\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vlucht/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vlucht",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vlucht",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Vlucht met gegeven id moet worden verwijderd', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vlucht/162",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vlucht",
+								"162"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Vlucht by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Vlucht wordt getoond met het gegeven id', function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/vliegmaatschappij/vlucht/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vliegmaatschappij",
+								"vlucht",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": ""
+		}
+	]
+}
